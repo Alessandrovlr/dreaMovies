@@ -3,7 +3,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <div><h1>ola</h1></div>
+      <div><h1>ola2</h1></div>
     </>
   )
 }

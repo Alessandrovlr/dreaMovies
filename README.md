@@ -1,9 +1,9 @@
-🎬 Dreamovies
+#🎬 Dreamovies
 Dreamovies é uma aplicação web construída com React e Vite, que permite explorar filmes populares, os mais bem avaliados e lançamentos futuros. Também é possível pesquisar filmes e ver detalhes completos!
 
 Interface moderna, rápida e responsiva com animações suaves e estilização com TailwindCSS ✨
 
-🚀 Funcionalidades
+#🚀 Funcionalidades
 Página inicial de boas-vindas
 
 Visualização de:
@@ -22,7 +22,7 @@ Animações de transição (fade-in, fade-out)
 
 Layout 100% responsivo (mobile, tablet e desktop)
 
-🛠️ Tecnologias utilizadas
+#🛠️ Tecnologias utilizadas
 React ⚛️
 
 Vite ⚡
@@ -33,7 +33,7 @@ FontAwesome (ícones)
 
 Mock Data (simulando uma API)
 
-📦 Como rodar o projeto localmente
+#📦 Como rodar o projeto localmente
 Clone o repositório:
 
 bash:

@@ -14,7 +14,7 @@ export async function buscarFilmesPopulares() {
     });
 
     const filmes = response.data.results;
-    return filmes; // Retorna os filmes corretamente
+    return filmes; 
   } catch (error) {
     console.error("Erro ao buscar filmes:", error.message);
     return [];
@@ -27,7 +27,7 @@ export async function buscarTodosOsFilmes() {
       params: {
         api_key: API_KEY,
         language: "pt-BR",
-        sort_by: "popularity.desc", // ou 'release_date.desc' etc.
+        sort_by: "popularity.desc",
         page: 1,
       },
     });
@@ -35,7 +35,6 @@ export async function buscarTodosOsFilmes() {
     const totalPages = primeiraResposta.data.total_pages;
     let todosFilmes = primeiraResposta.data.results;
 
-    // Limita para evitar sobrecarga
     const LIMITE_PAGINAS = 5;
     const paginasParaBuscar = Math.min(totalPages, LIMITE_PAGINAS);
 
@@ -66,4 +65,27 @@ export async function buscarTodosOsFilmes() {
   }
 }
 
-export default {buscarFilmesPopulares, buscarTodosOsFilmes};
+export async function buscarTodasAsSeries(paginas = 5) {
+  const todasAsSeries = [];
+
+  try {
+    for (let page = 1; page <= paginas; page++) {
+      const response = await axios.get(`${BASE_URL}/tv/popular`, {
+        params: {
+          api_key: API_KEY,
+          language: 'pt-BR',
+          page,
+        },
+      });
+
+      todasAsSeries.push(...response.data.results);
+    }
+
+    return todasAsSeries;
+  } catch (error) {
+    console.error('Erro ao buscar séries:', error.message);
+    return [];
+  }
+}
+
+export default {buscarFilmesPopulares, buscarTodosOsFilmes, buscarTodasAsSeries};

@@ -5,6 +5,8 @@ import { Filme } from "./pages/Filme"
 import { Serie } from "./pages/Serie"
 import { Popular } from "./pages/Popular"
 import { PageNotFound } from "./pages/PageNotFound"
+import { FilmeEscolhido } from "./pages/FilmeEscolhido"
+import { Resultado } from "./pages/Resultado"
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/filme" element={<Filme />} />
             <Route path="/serie" element={<Serie />} />
             <Route path="/popular" element={<Popular />} />
+            <Route path="/filmeEscolhido/:id" element={<FilmeEscolhido />} />
+            <Route path="/resultados" element={<Resultado />} />
             <Route path="/*" element={<PageNotFound />} />
           </Route>
         </Routes>

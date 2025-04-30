@@ -1,12 +1,57 @@
-# React + Vite
+#🎬 Dreamovies
+Dreamovies é uma aplicação web construída com React e Vite, que permite explorar filmes populares, os mais bem avaliados e lançamentos futuros. Também é possível pesquisar filmes e ver detalhes completos!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface moderna, rápida e responsiva com animações suaves e estilização com TailwindCSS ✨
 
-Currently, two official plugins are available:
+#🚀 Funcionalidades
+Página inicial de boas-vindas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visualização de:
 
-## Expanding the ESLint configuration
+Filmes Populares
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project
+Filmes Mais Bem Avaliados
+
+Lançamentos
+
+Pesquisa de filmes em tempo real
+
+Página de detalhes do filme
+
+Animações de transição (fade-in, fade-out)
+
+Layout 100% responsivo (mobile, tablet e desktop)
+
+#🛠️ Tecnologias utilizadas
+React ⚛️
+
+Vite ⚡
+
+TailwindCSS 🎨
+
+FontAwesome (ícones)
+
+Mock Data (simulando uma API)
+
+#📦 Como rodar o projeto localmente
+Clone o repositório:
+
+bash:
+git clone https://github.com/Alessandrovlr/dreaMovies.git
+Acesse a pasta do projeto:
+
+bash:
+cd dreamovies
+
+Instale as dependências:
+
+bash
+npm i node
+
+Rode o projeto em ambiente de desenvolvimento:
+
+bash
+npm run dev
+
+🧑‍💻 Autor
+Feito por Alessandro Coutinho, João Formento, Kauã Klein

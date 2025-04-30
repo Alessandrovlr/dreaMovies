@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const setinha = <i className="fas fa-arrow-circle-right text-3xl"></i>
   return (
     <div className="flex flex-col justify-center w-[100%] h-[100%]">
       <main className="flex flex-col justify-center gap-[10%] items-center mx-auto px-4 py-8">
@@ -10,9 +11,9 @@ export const Home = () => {
           </p>
 
           <Link to="/filme" className="p-[2.5%] font-bold decoration-0 rounded-2xl bg-[rgb(117,47,163)] text-3xl text-white">
-            Buscar Filmes -{">"}
+            Buscar Filmes {setinha}
           </Link>
-
+          
           {/* <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition transform hover:scale-105">
                         Buscar Filmes <i class="fas fa-arrow-right ml-2"></i>
                     </button> */}

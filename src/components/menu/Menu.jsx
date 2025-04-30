@@ -1,8 +1,12 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { LinksNavigator } from "./LinksNavigator";
+import { InputFiltro } from "../filter/InputFiltro";
+import { mockMovies } from "../../banco";
+import { useSearch } from "../../contexts/SearchContext";
 
 export const Menu = () => {
+    const { setSearchResults } = useSearch();
     const mobileMenuRef = useRef(null);
 
     function toggleMobileMenu() {
@@ -10,14 +14,18 @@ export const Menu = () => {
             mobileMenuRef.current.classList.toggle('hidden');
         }
     }
-
-    function debounceSearch(event) {
-        console.log('Procurando:', event.target.value);
-    }
+    
+    function handleSearch(query) {
+        const results = mockMovies.filter(movie =>
+          movie.title.toLowerCase().includes(query.toLowerCase())
+        );
+        console.log(results)
+        setSearchResults(results); // Isso atualiza globalmente
+      }
 
     return (
         <nav className="bg-gray-800 shadow-lg sticky top-0 z-50">
-            <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div className="container mx-auto px-4 py-3 flex justify-between items-center flex-wrap">
                 
                 <div className="flex items-center space-x-2">
                     <Link to="/" className="text-white text-xl font-bold">DreaMovies</Link>
@@ -27,24 +35,19 @@ export const Menu = () => {
                     <LinksNavigator className="text-white hover:text-purple-400"/>
                 </div>
 
-                <div className="relative w-1/3">
-                    <input
-                        type="text"
-                        id="search-input"
-                        placeholder="Procurar..."
-                        className="w-full bg-gray-700 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        onKeyUp={debounceSearch}
-                    />
-                    <i className="fas fa-search absolute right-3 top-2.5 text-gray-400"></i>
+                <div className="w-full md:w-1/3 mt-2 md:mt-0">
+                    <InputFiltro onSearch={handleSearch} />
                 </div>
 
-                <button className="md:hidden text-white" onClick={toggleMobileMenu}>
-                    <i className="fas fa-bars text-2xl"></i>
-                </button>
+                <div className="md:hidden mt-2 md:mt-0">
+                    <button className="text-white" onClick={toggleMobileMenu}>
+                        <i className="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
 
             <div ref={mobileMenuRef} className="hidden md:hidden bg-gray-800 px-4 pb-4">
-                <LinksNavigator/>
+                <LinksNavigator />
             </div>
         </nav>
     );

@@ -1,5 +1,5 @@
 export const Serie = () => {
     return(
-        <div><h1>Pagina serie</h1></div>
+        <div className="flex flex-col justify-center items-center h-screen"><h1>Pagina serie</h1></div>
     )
 }

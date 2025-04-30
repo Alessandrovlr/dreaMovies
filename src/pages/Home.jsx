@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Home = () => {
   const setinha = <i className="fas fa-arrow-circle-right text-3xl"></i>
   return (
-    <div className="flex flex-col justify-center w-[100%] h-[100%]">
+    <div className="flex flex-col justify-center w-[100%] h-[87vh]">
       <main className="flex flex-col justify-center gap-[10%] items-center mx-auto px-4 py-8">
           <h1 className="text-6xl font-bold mb-4">Bem vindo a DreaMovies</h1>
           <p className="text-2xl text-gray-300 mb-8">

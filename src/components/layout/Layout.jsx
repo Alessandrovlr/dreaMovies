@@ -3,9 +3,9 @@ import { Menu } from "../menu/Menu";
 
 export const Layout = () => {
   return (
-    <div className="h-[100dvh] w-[100dvw]">
+    <div className="w-screen">
       <Menu />
-      <main className="flex flex-col justify-center items-center h-[87%]">
+      <main className="flex flex-col justify-center items-center">
         <Outlet />
       </main>
       <footer className="bg-gray-800 text-gray-400 py-8">

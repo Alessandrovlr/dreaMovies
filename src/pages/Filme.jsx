@@ -14,7 +14,9 @@ export const Filme = () => {
     carregarFilmes();
   }, []);
 
-  const filmesUnicos = Array.from(new Map(filmes.map(f => [f.id, f])).values());
+  const filmesUnicos = Array.from(
+    new Map(filmes.map((f) => [f.id, f])).values()
+  );
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 p-10">
@@ -27,8 +29,14 @@ export const Filme = () => {
               alt={filme.title}
               className="w-full h-auto rounded mb-2"
             />
-            <p>Data: {filme.release_date}</p>
-            <p>Nota: {filme.vote_average}</p>
+            <p>
+              <span className="font-bold">Data: </span> {filme.release_date}
+            </p>
+            <p>
+              <span className="font-bold">Nota: </span>
+              {filme.vote_average.toFixed(1)}{" "}
+              <i className="fa fa-star text-yellow-500"></i>
+            </p>
             {/* <p className="text-gray-400 text-sm mt-2">{filme.overview}</p> */}
           </div>
         </Link>

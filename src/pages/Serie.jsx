@@ -3,7 +3,6 @@ import { buscarTodasAsSeries } from "../services/api";
 import { useState, useEffect } from "react";
 
 export const Serie = () => {
-
      const [serie, setSerie] = useState([]);
     
       useEffect(() => {

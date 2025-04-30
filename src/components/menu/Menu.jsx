@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { LinksNavigator } from "./LinksNavigator";
 import { InputFiltro } from "../filter/InputFiltro";
 import { mockMovies } from "../../banco";
@@ -7,6 +7,7 @@ import { useSearch } from "../../contexts/SearchContext";
 
 export const Menu = () => {
     const { setSearchResults } = useSearch();
+    const navigate = useNavigate();
     const mobileMenuRef = useRef(null);
 
     function toggleMobileMenu() {
@@ -20,7 +21,8 @@ export const Menu = () => {
           movie.title.toLowerCase().includes(query.toLowerCase())
         );
         console.log(results)
-        setSearchResults(results); // Isso atualiza globalmente
+        setSearchResults(results);
+        navigate("/resultados");
       }
 
     return (

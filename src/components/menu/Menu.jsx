@@ -1,11 +1,23 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect} from "react";
 import { Link, useNavigate} from "react-router-dom";
 import { LinksNavigator } from "./LinksNavigator";
 import { InputFiltro } from "../filter/InputFiltro";
-import { mockMovies } from "../../banco";
 import { useSearch } from "../../contexts/SearchContext";
+import { buscarTodosOsFilmes } from "../../services/api";
 
 export const Menu = () => {
+    const [filmes, setFilmes] = useState([]);
+    
+      useEffect(() => {
+        async function carregarFilmes() {
+          const lista = await buscarTodosOsFilmes();
+          setFilmes(lista);
+        }
+    
+        carregarFilmes();
+      }, []);
+
+
     const { setSearchResults } = useSearch();
     const navigate = useNavigate();
     const mobileMenuRef = useRef(null);
@@ -17,7 +29,7 @@ export const Menu = () => {
     }
     
     function handleSearch(query) {
-        const results = mockMovies.filter(movie =>
+        const results = filmes.filter(movie =>
           movie.title.toLowerCase().includes(query.toLowerCase())
         );
         console.log(results)
@@ -29,7 +41,8 @@ export const Menu = () => {
         <nav className="bg-gray-800 shadow-lg sticky top-0 z-50">
             <div className="container mx-auto px-4 py-3 flex justify-between items-center flex-wrap">
                 
-                <div className="flex items-center space-x-2">
+                <i className="fas fa-film text-purple-400 text-3xl"></i>
+                <div className="flex space-x-2">
                     <Link to="/" className="text-white text-xl font-bold">DreaMovies</Link>
                 </div>
 

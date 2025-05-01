@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
-import { buscarTodosOsFilmes } from "../services/api";
 import { useState, useEffect } from "react";
+import { buscarTodosOsFilmes } from "../services/api";
+import { MovieCard } from "../components/movie/MovieCard";
 
 export const Filme = () => {
   const [filmes, setFilmes] = useState([]);
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const filmesPorPagina = 15;
 
   useEffect(() => {
     async function carregarFilmes() {
@@ -14,33 +16,46 @@ export const Filme = () => {
     carregarFilmes();
   }, []);
 
-  const filmesUnicos = Array.from(
-    new Map(filmes.map((f) => [f.id, f])).values()
-  );
+  const totalPaginas = Math.ceil(filmes.length / filmesPorPagina);
+  const indiceInicial = (paginaAtual - 1) * filmesPorPagina;
+  const filmesVisiveis = filmes.slice(indiceInicial, indiceInicial + filmesPorPagina);
+
+  const proximaPagina = () => {
+    if (paginaAtual < totalPaginas) {
+      setPaginaAtual(paginaAtual + 1);
+    }
+  };
+
+  const paginaAnterior = () => {
+    if (paginaAtual > 1) {
+      setPaginaAtual(paginaAtual - 1);
+    }
+  };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 p-10">
-      {filmesUnicos.map((filme) => (
-        <Link to={`/filmeEscolhido/${filme.id}`} key={filme.id}>
-          <div className="bg-gray-800 text-white rounded-lg shadow-md p-4 transition hover:scale-105 hover:bg-purple-700">
-            <h2 className="text-xl font-bold mb-2">{filme.title}</h2>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
-              alt={filme.title}
-              className="w-full h-auto rounded mb-2"
-            />
-            <p>
-              <span className="font-bold">Data: </span> {filme.release_date}
-            </p>
-            <p>
-              <span className="font-bold">Nota: </span>
-              {filme.vote_average.toFixed(1)}{" "}
-              <i className="fa fa-star text-yellow-500"></i>
-            </p>
-            {/* <p className="text-gray-400 text-sm mt-2">{filme.overview}</p> */}
-          </div>
-        </Link>
-      ))}
+    <div className="p-10">
+
+        <MovieCard filmesVisiveis={filmesVisiveis}/>
+
+      <div className="flex justify-center items-center gap-6 mt-10">
+        <button
+          onClick={paginaAnterior}
+          disabled={paginaAtual === 1}
+          className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-800 disabled:opacity-50"
+        >
+          ⬅ Anterior
+        </button>
+
+        <span className="text-white text-lg">Página {paginaAtual} de {totalPaginas}</span>
+
+        <button
+          onClick={proximaPagina}
+          disabled={paginaAtual === totalPaginas}
+          className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-800 disabled:opacity-50"
+        >
+          Próxima ➡
+        </button>
+      </div>
     </div>
   );
 };

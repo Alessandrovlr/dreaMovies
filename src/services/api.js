@@ -23,6 +23,15 @@ export async function buscarFilmesPopulares() {
 
 export async function buscarTodosOsFilmes() {
   try {
+    const generoResponse = await axios.get(`${BASE_URL}/genre/movie/list`, {
+      params: {
+        api_key: API_KEY,
+        language: "pt-BR",
+      },
+    });
+
+    const listaGeneros = generoResponse.data.genres;
+
     const primeiraResposta = await axios.get(`${BASE_URL}/discover/movie`, {
       params: {
         api_key: API_KEY,
@@ -39,7 +48,6 @@ export async function buscarTodosOsFilmes() {
     const paginasParaBuscar = Math.min(totalPages, LIMITE_PAGINAS);
 
     const promessas = [];
-
     for (let page = 2; page <= paginasParaBuscar; page++) {
       promessas.push(
         axios.get(`${BASE_URL}/discover/movie`, {
@@ -58,7 +66,17 @@ export async function buscarTodosOsFilmes() {
       todosFilmes = todosFilmes.concat(res.data.results);
     });
 
-    return todosFilmes;
+    const filmesComGeneros = todosFilmes.map((filme) => {
+      const generosDoFilme = filme.genre_ids
+        .map((id) => listaGeneros.find((g) => g.id === id)?.name)
+        .filter(Boolean); 
+      return {
+        ...filme,
+        genres: generosDoFilme,
+      };
+    });
+
+    return filmesComGeneros;
   } catch (error) {
     console.error("Erro ao buscar todos os filmes:", error.message);
     return [];

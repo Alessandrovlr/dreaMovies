@@ -1,34 +1,37 @@
-export const MovieCard = ({ movie }) => {
-    const posterUrl = movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : "https://via.placeholder.com/500x750?text=No+Poster";
-  
-    return (
-      <div
-        className="movie-card bg-gray-800 rounded-lg overflow-hidden shadow-lg cursor-pointer hover:shadow-xl transition"
-        onClick={() => console.log("Detalhes de:", movie.id)}
-      >
-        <div className="relative pb-150">
-          <img
-            src={posterUrl}
-            alt={movie.title}
-            className="absolute h-full w-full object-cover"
-            onError={(e) =>
-              (e.target.src = "https://via.placeholder.com/500x750?text=Poster+Not+Available")
-            }
-          />
-        </div>
-        <div className="p-4">
-          <h3 className="font-bold text-lg mb-1 truncate">{movie.title}</h3>
-          <div className="flex justify-between items-center text-sm text-gray-400">
-            <span>{movie.release_date?.split("-")[0] || "N/A"}</span>
-            <span className="flex items-center">
-              <i className="fas fa-star text-yellow-400 mr-1"></i>
-              {movie.vote_average > 0 ? movie.vote_average.toFixed(1) : "N/A"}
-            </span>
+import { Link } from "react-router-dom";
+
+export const MovieCard = ({ filmesVisiveis }) => {
+  if (!Array.isArray(filmesVisiveis)) {
+    return <p className="text-white">Nenhum filme encontrado.</p>;
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+      {filmesVisiveis.map((filme) => (
+        <Link to={`/filmeEscolhido/${filme.id}`} key={filme.id}>
+          <div className="bg-gray-800 text-white rounded-lg shadow-md p-4 transition hover:scale-105 hover:bg-purple-700">
+            <h2 className="text-xl font-bold mb-2">{filme.title}</h2>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
+              alt={filme.title}
+              className="w-full h-auto rounded mb-2"
+            />
+            <p>
+              <span className="font-bold">Gêneros: </span>
+              {filme.genres?.join(", ") || "N/A"}
+            </p>
+            <p>
+              <span className="font-bold">Data: </span>
+              {filme.release_date}
+            </p>
+            <p>
+              <span className="font-bold">Nota: </span>
+              {filme.vote_average?.toFixed(1)}{" "}
+              <i className="fa fa-star text-yellow-500"></i>
+            </p>
           </div>
-        </div>
-      </div>
-    );
-  };
-  
+        </Link>
+      ))}
+    </div>
+  );
+};

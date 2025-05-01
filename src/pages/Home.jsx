@@ -21,3 +21,5 @@ export const Home = () => {
     </div>
   );
 };
+
+// tentando arrumar a merda q eu fiz

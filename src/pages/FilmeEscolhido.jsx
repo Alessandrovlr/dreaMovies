@@ -8,7 +8,6 @@ export const FilmeEscolhido = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    //Deixa o scroll no começo da página quando abre um filme
     async function carregarFilmes() {
       const lista = await buscarTodosOsFilmes();
       setFilmes(lista);

@@ -96,7 +96,32 @@ export async function buscarTodasAsSeries(paginas = 5) {
         },
       });
 
-      todasAsSeries.push(...response.data.results);
+      const seriesComDescricao = await Promise.all(
+        response.data.results.map(async (serie) => {
+          // Se a descrição estiver vazia, tenta buscar em inglês
+          if (!serie.overview || serie.overview.trim() === "") {
+            try {
+              const responseIngles = await axios.get(`${BASE_URL}/tv/${serie.id}`, {
+                params: {
+                  api_key: API_KEY,
+                  language: 'en-US',
+                },
+              });
+
+              // Substitui a descrição se houver
+              if (responseIngles.data.overview) {
+                serie.overview = responseIngles.data.overview;
+              }
+            } catch (err) {
+              console.warn(`Erro ao buscar descrição em inglês para série ${serie.id}`);
+            }
+          }
+
+          return serie;
+        })
+      );
+
+      todasAsSeries.push(...seriesComDescricao);
     }
 
     return todasAsSeries;

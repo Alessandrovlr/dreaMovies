@@ -8,6 +8,8 @@ import { FilmeEscolhido } from "../pages/FilmeEscolhido"
 import { Resultado } from "../pages/Resultado"
 import { PageNotFound } from "../pages/PageNotFound"
 import { SerieEscolhido } from "../pages/SerieEscolhido"
+import { ResultadosFilme } from "../pages/ResultadosFilme"
+import { ResultadosSerie } from "../pages/ResultadosSerie"
 
 
 export const RotasPaginas = () => {
@@ -22,7 +24,9 @@ export const RotasPaginas = () => {
                     <Route path="/popular" element={<Popular />} />
                     <Route path="/filmeEscolhido/:id" element={<FilmeEscolhido/>}/>
                     <Route path="/serieEscolhido/:id" element={<SerieEscolhido/>}/>
-                    <Route path="/resultados" element={<Resultado />} />
+                    <Route path="/resultado" element={<Resultado />} />
+                    <Route path="/resultadosfilme" element={<ResultadosFilme/>} />
+                    <Route path="/resultadosserie" element={<ResultadosSerie/>} />
                     <Route path="/*" element={<PageNotFound />} />
                   </Route>
                 </Routes>

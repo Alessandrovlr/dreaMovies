@@ -64,7 +64,6 @@ export const Menu = () => {
     const resultsSeries = allSeries.filter((seri) =>
       seri.name.toLowerCase().includes(query.toLowerCase())
     );
-    console.log(`filmes: ${resultsFilmes}   \nSerie: ${resultsSeries}`)
     setSearchResults([resultsFilmes, resultsSeries]);
     navigate("/resultado");
   }

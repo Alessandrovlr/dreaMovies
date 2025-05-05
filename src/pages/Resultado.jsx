@@ -1,4 +1,5 @@
 import { FilmePesquisa } from "../components/filter/FilmePesquisa";
+import { SeriePesquisa } from "../components/filter/SeriePesquisa";
 import { useSearch } from "../contexts/SearchContext";
 
 export const Resultado = () => {
@@ -12,7 +13,8 @@ export const Resultado = () => {
         </div>
         <h1 className="text-3xl text-white font-bold">Resultados da Busca</h1>
       </div>
-      <FilmePesquisa results={searchResults} />
+      <FilmePesquisa results={searchResults[0]} />
+      <SeriePesquisa results={searchResults[1]} />
     </div>
   );
 };

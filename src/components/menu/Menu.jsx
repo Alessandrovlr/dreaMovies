@@ -56,23 +56,18 @@ export const Menu = () => {
       navigate("/resultadosfilme");
 
     } else{
-      const all = [...filmes, ...series];
-      const results = all.filter((item) =>
-        (item.title || item.name).toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(results);
-      navigate("/resultado");
-    }
-  //   const resultsFilmes = filmes.filter((film) =>
-  //     film.title.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   const resultsSeries = series.filter((seri) =>
-  //     seri.name.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   console.log(`filmes: ${resultsFilmes}   \nSerie: ${resultsSeries}`)
-  //   setSearchResults(resultsFilmes, resultsSeries);
-  //   navigate("/resultado");
-  // }
+      const allFilmes = [...filmes]
+      const allSeries = [...series]
+    const resultsFilmes = allFilmes.filter((film) =>
+      film.title.toLowerCase().includes(query.toLowerCase())
+    );
+    const resultsSeries = allSeries.filter((seri) =>
+      seri.name.toLowerCase().includes(query.toLowerCase())
+    );
+    console.log(`filmes: ${resultsFilmes}   \nSerie: ${resultsSeries}`)
+    setSearchResults([resultsFilmes, resultsSeries]);
+    navigate("/resultado");
+  }
   }
 
   return (

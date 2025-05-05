@@ -3,7 +3,7 @@ import { Menu } from "../menu/Menu";
 
 export const Layout = () => {
   return (
-    <div className="w-screen">
+    <div>
       <Menu />
       <main className="flex flex-col justify-center items-center">
         <Outlet />
@@ -16,10 +16,10 @@ export const Layout = () => {
                         <p>Seu catálogo de filmes dos Sonhos</p>
                     </div>
                     <div className="flex space-x-6">
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+                        <a href="#" className="hover:text-white transition"><i className="fab fa-facebook-f"></i></a>
+                        <a href="#" className="hover:text-white transition"><i className="fab fa-twitter"></i></a>
+                        <a href="#" className="hover:text-white transition"><i className="fab fa-instagram"></i></a>
+                        <a href="#" className="hover:text-white transition"><i className="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div className="mt-8 text-center text-sm">

@@ -16,10 +16,71 @@ export const MovieCard = ({ filmesVisiveis }) => {
               alt={filme.title}
               className="w-full h-auto rounded mb-2"
             />
-            <p>
-              <span className="font-bold">Gêneros: </span>
-              {filme.genres?.join(", ") || "N/A"}
-            </p>
+            <div className="flex flex-wrap w-[100%] items-start gap-1">
+              {filme.genres.map((element) => {
+                let cor;
+                switch (element) {
+                  case "Ação":
+                    cor = "bg-orange-500";
+                    break;
+                  case "Crime":
+                    cor = "bg-red-600";
+                    break;
+                  case "Thriller":
+                    cor = "bg-purple-500";
+                    break;
+                  case "Família":
+                    cor = "bg-blue-600";
+                    break;
+                  case "Aventura":
+                    cor = "bg-green-500";
+                    break;
+                  case "Documentário":
+                    cor = "bg-gray-500";
+                    break;
+                  case "Comédia":
+                    cor = "bg-yellow-500";
+                    break;
+                  case "Fantasia":
+                    cor = "bg-pink-500";
+                    break;
+                  case "Terror":
+                    cor = "bg-black";
+                    break;
+                  case "Faroeste":
+                    cor = "bg-orange-900";
+                    break;
+                  case "Música":
+                    cor = "bg-purple-900";
+                    break;
+                  case "Mistério":
+                    cor = "bg-gray-700";
+                    break;
+                  case "Ficção científica":
+                    cor = "bg-blue-400";
+                    break;
+                  case "Drama":
+                    cor = "bg-red-400";
+                    break;
+                  case "Guerra":
+                    cor = "bg-green-900";
+                    break;
+                  case "Romance":
+                    cor = "bg-[#800000]";
+                    break;
+                  case "Animação":
+                    cor = "bg-yellow-600";
+                    break;
+                }
+                return (
+                  <p
+                    className={`${cor} p-1 rounded w-fit text-white font-bold`}
+                  >
+                    {element}
+                  </p>
+                );
+              })}
+            </div>
             <p>
               <span className="font-bold">Data: </span>
               {filme.release_date}

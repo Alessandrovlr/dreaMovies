@@ -3,7 +3,7 @@ import { Menu } from "../menu/Menu";
 
 export const Layout = () => {
   return (
-    <div className="w-screen">
+    <div>
       <Menu />
       <main className="flex flex-col justify-center items-center">
         <Outlet />

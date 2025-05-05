@@ -10,7 +10,7 @@ export const ResultadosFilme = () => {
         <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
           <i className="fas fa-search text-white text-3xl"></i>
         </div>
-        <h1 className="text-3xl text-white font-bold">Resultados da Busca FILMES</h1>
+        <h1 className="text-3xl text-white font-bold">Resultados da Busca de filmes</h1>
       </div>
       <FilmePesquisa results={searchResults} />
     </div>

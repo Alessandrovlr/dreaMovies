@@ -8,9 +8,8 @@ Conta com uma interface moderna, rápida e responsiva, com animações suaves e 
 
 ## 🎥 Visualização de:
 
-Filmes Populares
-
-Filmes Mais Bem Avaliados
+Filmes
+Series
 
 Lançamentos
 
@@ -23,41 +22,25 @@ Lançamentos
 📱 Layout totalmente responsivo (mobile, tablet e desktop)
 
 ## 🛠️ Tecnologias Utilizadas
+
 React ⚛️
 
 Vite ⚡
 
 TailwindCSS 🎨
 
-FontAwesome (para ícones)
-
-Mock Data (simulando uma API)
-
 ## 📦 Como Rodar o Projeto Localmente
 Clone o repositório:
 
-bash
-Copiar
-Editar
 git clone https://github.com/Alessandrovlr/dreaMovies.git
 Acesse a pasta do projeto:
 
-bash
-Copiar
-Editar
 cd dreamovies
-Instale as dependências:
 
-bash
-Copiar
-Editar
-npm install
-Inicie o projeto em ambiente de desenvolvimento:
+npm i
 
-bash
-Copiar
-Editar
 npm run dev
+
 ## 👨‍💻 Autores
 Projeto desenvolvido por:
 
